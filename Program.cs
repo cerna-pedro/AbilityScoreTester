@@ -25,9 +25,25 @@
             
             static int ReadInt(int lastUsedValue, string prompt)
             {
-                Console.Write($"{prompt} [{lastUsedValue}]");
+                Console.Write($"{prompt} [{lastUsedValue}]: ");
                 string userInput = Console.ReadLine();
                 if (int.TryParse(userInput,out int value))
+                {
+                    Console.WriteLine($" using value {value}");
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($" using default value {lastUsedValue}");
+                    return lastUsedValue;
+                }
+            }
+
+            static double ReadDouble(double lastUsedValue, string prompt)
+            {
+                Console.Write($"{prompt} [{lastUsedValue}]: ");
+                string userInput = Console.ReadLine();
+                if (double.TryParse(userInput, out double value))
                 {
                     Console.WriteLine($" using value {value}");
                     return value;
